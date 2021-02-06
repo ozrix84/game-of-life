@@ -2,7 +2,7 @@
 Conway's Game of Life written in React.
 
 Dependencies on 
-- create-react-ap
+- create-react-app
 - lodash
 - random-js
 
