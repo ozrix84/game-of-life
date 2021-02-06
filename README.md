@@ -1,5 +1,5 @@
 # Game of Life / React
-Conway's Game of Life written in React.
+Conway's Game of Life written in React and Typescript.
 
 Dependencies on 
 - create-react-app
