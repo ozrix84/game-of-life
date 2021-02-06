@@ -8,6 +8,7 @@ Dependencies on
 
 
 ## Installation
+`git clone https://github.com/ozrix84/game-of-life.git`
 `npm i`
 
 **Development mode**
