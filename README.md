@@ -1,6 +1,11 @@
 # Game of Life / React
 Conway's Game of Life written in React.
 
+Dependencies on 
+- create-react-ap
+- lodash
+- random-js
+
 
 ## Installation
 `npm i`
