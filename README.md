@@ -22,6 +22,8 @@ Tests are written using Testing Library React / Jest.
 
 `npm run-script build`
 
+`serve -s build` (Preview the production build)
+
 **Run tests**
 
 `npm run-script test`
