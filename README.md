@@ -1,7 +1,7 @@
 # Game of Life / React
 Conway's Game of Life written in React and Typescript.
 
-Dependencies on 
+Additional dependencies:
 - create-react-app
 - lodash
 - random-js
