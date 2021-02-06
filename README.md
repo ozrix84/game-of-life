@@ -6,6 +6,8 @@ Additional dependencies:
 - lodash
 - random-js
 
+Tests are written using Testing Library React / Jest.
+
 
 ## Installation
 `git clone https://github.com/ozrix84/game-of-life.git`
