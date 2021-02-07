@@ -210,7 +210,6 @@ export default class World extends Component<WorldProps, WorldState> {
 		/**
 		 * Discard world on reset change
 		 */
-		console.log(this.props.resetted, prevProps.resetted);
 		if (this.props.resetted !== prevProps.resetted)
 			this.setState({
 				world: generateWorld({
