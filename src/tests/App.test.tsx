@@ -2,44 +2,25 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from '../components/App';
-import World from "../components/World";
 
 test('App renders controls and world', () => {
-  	render(<App />);
+  	const { container } = render(<App />);
 
 	/**
 	 * Query the start button
 	 */
-	const startButton = screen.getByText(/start/i);
+	const startButton = screen.getByTestId('start');
 	expect(startButton).toBeInTheDocument();
 
 	/**
 	 * Query the reset button
 	 */
-	const resetButton = screen.getByText(/reset/i);
+	const resetButton = screen.getByText(/Reset/i);
 	expect(resetButton).toBeInTheDocument();
 
 	/**
-	 * World props
-	 */
-	const props = {
-		iteration: 0,
-		species: 0,
-		resetted: false
-	}
-
-	/**
-	 * Render world
-	 */
-	const { container } = render(<World iteration={props.iteration} species={props.species} resetted={props.resetted} />);
-
-	/**
-	 * Get world HTML element
+	 * Query the world
 	 */
 	const worldTable = container.getElementsByTagName('table')[0];
-
-	/**
-	 * Expect it to be rendered
-	 */
 	expect(worldTable).toBeInTheDocument();
 });

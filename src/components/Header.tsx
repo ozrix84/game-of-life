@@ -29,15 +29,20 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 			<div className="header_controls">
 				<div className="header_flex">
-					<div className="button" onClick={()=>props.onClick()}>
+					<div data-testid="start"
+						 className="button"
+						 onClick={()=>props.onClick()}>
 						{!props.timeoutId ? 'Start' : 'Stop'}
 					</div>
 
-					<div className="button" onClick={()=>props.onReset()}>Reset</div>
+					<div data-testid="reset"
+						 className="button"
+						 onClick={()=>props.onReset()}>Reset</div>
 
 					<label>
 						<strong>Species:</strong>
-						<select value={props.species} onChange={(e)=>props.onChangeSpecies(e)}>
+						<select value={props.species}
+								onChange={(e)=>props.onChangeSpecies(e)}>
 							{[...new Array(seed.species + 1)].map((el, i)=> {
 									return <option key={i} value={i}>{i}</option>
 								}
@@ -47,28 +52,30 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 					<label>
 						<strong>Delay (ms):</strong>
-						<select value={props.iterationDelay} onChange={(e)=>props.onChangeSpeed(e)}>
+						<select value={props.iterationDelay}
+								onChange={(e)=>props.onChangeSpeed(e)}>
 							{delay.map((delay,i)=>{
 								return <option key={i} value={delay}>{delay}</option>
 							})}
 						</select>
 					</label>
 				</div>
+
 				<div className="header_flex">
-				<span>
-					<strong>Cells / row:</strong>
-					{seed.cells}
-				</span>
+					<span>
+						<strong>Cells / row:</strong>
+						{seed.cells}
+					</span>
+
+						<span>
+						<strong>Species:</strong>
+							{seed.species}
+					</span>
 
 					<span>
-					<strong>Species:</strong>
-						{seed.species}
-				</span>
-
-					<span>
-					<strong>Iterations:</strong>
-						{Number(props.iteration).toLocaleString('cs')}
-				</span>
+						<strong>Iterations:</strong>
+							{Number(props.iteration).toLocaleString('cs')}
+					</span>
 				</div>
 			</div>
 		</div>
