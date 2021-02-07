@@ -88,7 +88,7 @@ const App: React.FC = () => {
 	useEffect(()=>{
 		if (prevIterationDelay && prevIterationDelay !== iterationDelay) {
 			stop();
-			start();
+			if (timeoutId) start();
 		}
 	});
 
