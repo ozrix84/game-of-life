@@ -3,8 +3,6 @@ Conway's Game of Life written in React and Typescript.
 
 [Demo](http://161.35.55.69/game-of-life)
 
-![_GOF](https://user-images.githubusercontent.com/78653736/107159768-712f5080-6992-11eb-8c9c-801d12fc26bf.gif)
-
 Additional dependencies:
 - create-react-app
 - lodash
