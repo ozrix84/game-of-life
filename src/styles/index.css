@@ -122,7 +122,7 @@ select {
 	display: flex;
 	margin-bottom: 3px;
 	text-align: left;
-	border-bottom: 2px solid #ccc;
+	border-bottom: 2px solid #bbb;
 	align-items: center;
 	padding-bottom: 6px;
 }
