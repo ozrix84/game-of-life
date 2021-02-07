@@ -1,6 +1,8 @@
 # Game of Life / React
 Conway's Game of Life written in React and Typescript.
 
+![GOF](https://user-images.githubusercontent.com/78653736/107159815-af2c7480-6992-11eb-90f4-a665cff9d783.gif)
+
 [Demo](http://161.35.55.69/game-of-life)
 
 Additional dependencies:
