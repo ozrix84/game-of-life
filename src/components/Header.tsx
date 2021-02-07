@@ -29,11 +29,11 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 			<div className="header_controls">
 				<div className="header_flex">
-					<button onClick={()=>props.onClick()}>
+					<div className="button" onClick={()=>props.onClick()}>
 						{!props.timeoutId ? 'Start' : 'Stop'}
-					</button>
+					</div>
 
-					<button onClick={()=>props.onReset()}>Reset</button>
+					<div className="button" onClick={()=>props.onReset()}>Reset</div>
 
 					<label>
 						<strong>Species:</strong>
