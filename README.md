@@ -5,14 +5,6 @@ Conway's Game of Life written in React and Typescript.
 
 ![GOF](https://user-images.githubusercontent.com/78653736/107159815-af2c7480-6992-11eb-90f4-a665cff9d783.gif)
 
-Dependencies:
-- create-react-app
-- lodash
-- random-js
-
-Tests are written using Testing Library React / Jest.
-
-
 ## Installation
 `git clone https://github.com/ozrix84/game-of-life.git`
 
