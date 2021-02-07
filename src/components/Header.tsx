@@ -12,7 +12,7 @@ type HeaderProps = {
 	species: number;
 }
 
-const delay = [ 15, 50, 120, 500 ];
+const delay = [ 15, 40, 120, 500 ];
 
 /**
  * Header controls and information display

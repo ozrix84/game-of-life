@@ -32,7 +32,7 @@ const App: React.FC = () => {
 	/**
 	 * Iteration delay
 	 */
-	const [ iterationDelay, setIterationDelay ] = useState<number>(50);
+	const [ iterationDelay, setIterationDelay ] = useState<number>(40);
 	const prevIterationDelay = usePrevious(iterationDelay);
 
 	/**
