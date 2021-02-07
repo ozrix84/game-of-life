@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import World from "../components/World";
 import Header from '../components/Header';
+import usePrevious from "../hooks/usePrevious";
 
 /**
  * Root App
@@ -16,7 +17,7 @@ const App: React.FC = () => {
 	/**
 	 * Inerval ID pointer
 	 */
-	const [ intervalId, setIntervalId ] = useState<number>(0);
+	const [ timeoutId, setTimeoutId ] = useState<number>(0);
 
 	/**
 	 * Selected species for drawing
@@ -29,40 +30,38 @@ const App: React.FC = () => {
 	const [ resetted, setResetted ] = useState<boolean>(false);
 
 	/**
+	 * Iteration delay
+	 */
+	const [ iterationDelay, setIterationDelay ] = useState<number>(50);
+	const prevIterationDelay = usePrevious(iterationDelay);
+
+	/**
 	 * Start iterating
 	 */
 	function start(): void {
-		/**
-		 * Return in case we're already running
-		 */
-		if (intervalId) return;
-
-		/**
-		 * Make a copy of the current iteration
-		 */
 		let counter = iteration;
 
-		setIntervalId(window.setInterval(() => {
+		function loop(): void {
 			counter++;
-			setIteration(counter)
-		},50));
-
-		setResetted(false);
+			setIteration(counter);
+			setTimeoutId(window.setTimeout(loop, iterationDelay));
+		}
+		loop();
 	}
 
 	/**
 	 * Stop iterating
 	 */
 	function stop(): void {
-		window.clearInterval(intervalId);
-		setIntervalId(0);
+		window.clearTimeout(timeoutId);
+		setTimeoutId(0);
 	}
 
 	/**
 	 * Reset game world state
 	 */
 	function reset(): void {
-		setResetted(!resetted);
+		setResetted(true);
 		setIteration(0);
 		stop();
 	}
@@ -75,12 +74,33 @@ const App: React.FC = () => {
 		setSpecies(+e.target.value);
 	}
 
+	/**
+	 * Switch the delay between renders
+	 * @param {React.ChangeEvent<HTMLSelectElement>>} e - event
+	 */
+	function switchDelay(e: React.ChangeEvent<HTMLSelectElement>): void {
+		setIterationDelay(+e.target.value);
+	}
+
+	/**
+	 * Re-run on iteration delay change
+	 */
+	useEffect(()=>{
+		if (prevIterationDelay && prevIterationDelay !== iterationDelay) {
+			stop();
+			start();
+		}
+	});
+
 	return <>
-		<Header onClick={()=>{!intervalId ? start() : stop()}}
-				onChange={(e)=> switchSpeciesType(e)}
+		<Header onClick={()=>{!timeoutId ? start() : stop()}}
+				onChangeSpecies={(e)=> switchSpeciesType(e)}
+				onChangeSpeed={(e)=> switchDelay(e)}
 				onReset={()=> reset()}
-				intervalId={intervalId}
+				timeoutId={timeoutId}
 				iteration={iteration}
+				iterationDelay={iterationDelay}
+				species={species}
 		/>
 
 		<hr/>

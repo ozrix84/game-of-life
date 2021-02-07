@@ -35,9 +35,10 @@ td:hover {
 }
 
 div {
-	display: inline-block;
+	display: flex;
 	margin-bottom: 10px;
 	text-align: left;
+	align-items: center;
 }
 
 span {
@@ -67,10 +68,11 @@ button {
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: bold;
+	line-height: 14px;
 }
 
 select {
-	margin-left: 10px;
+	margin: 0 20px 0 10px;
 }
 
 .type-1 {
