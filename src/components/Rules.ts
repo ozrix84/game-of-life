@@ -1,7 +1,7 @@
 import { Random } from "random-js";
 const random = new Random();
 
-const life = (cells: number[]): number => {
+const rules = (cells: number[]): number => {
 	/**
 	 * The root cell
 	 * @type {number}
@@ -77,4 +77,4 @@ const life = (cells: number[]): number => {
 	return root;
 }
 
-export default life;
+export default rules;

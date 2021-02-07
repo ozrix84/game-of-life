@@ -21,48 +21,56 @@ const delay = [ 15, 50, 120, 500 ];
  */
 const Header: React.FC<HeaderProps> = (props) => {
 	return <>
-		<div>
-			<button onClick={()=>props.onClick()}>
-				{!props.timeoutId ? 'Start' : 'Stop'}
-			</button>
+		<div className="header">
+			<div className="header_headline">
+				<h1>Conway's Game of Life</h1>
+				<p>Draw some shapes, then press start</p>
+			</div>
 
-			<button onClick={()=>props.onReset()}>Reset</button>
+			<div className="header_controls">
+				<div className="header_flex">
+					<button onClick={()=>props.onClick()}>
+						{!props.timeoutId ? 'Start' : 'Stop'}
+					</button>
 
-			<label>
-				<strong>Species:</strong>
-				<select value={props.species} onChange={(e)=>props.onChangeSpecies(e)}>
-					{[...new Array(seed.species + 1)].map((el, i)=> {
-							return <option key={i} value={i}>{i}</option>
-						}
-					)}
-				</select>
-			</label>
+					<button onClick={()=>props.onReset()}>Reset</button>
 
-			<label>
-				<strong>Delay (ms):</strong>
-				<select value={props.iterationDelay} onChange={(e)=>props.onChangeSpeed(e)}>
-					{delay.map((delay,i)=>{
-						return <option key={i} value={delay}>{delay}</option>
-					})}
-				</select>
-			</label>
-		</div>
+					<label>
+						<strong>Species:</strong>
+						<select value={props.species} onChange={(e)=>props.onChangeSpecies(e)}>
+							{[...new Array(seed.species + 1)].map((el, i)=> {
+									return <option key={i} value={i}>{i}</option>
+								}
+							)}
+						</select>
+					</label>
 
-		<div>
-			<span>
-				<strong>Cells:</strong>
-				{seed.cells}
-			</span>
+					<label>
+						<strong>Delay (ms):</strong>
+						<select value={props.iterationDelay} onChange={(e)=>props.onChangeSpeed(e)}>
+							{delay.map((delay,i)=>{
+								return <option key={i} value={delay}>{delay}</option>
+							})}
+						</select>
+					</label>
+				</div>
+				<div className="header_flex">
+				<span>
+					<strong>Cells / row:</strong>
+					{seed.cells}
+				</span>
 
-			<span>
-				<strong>Species:</strong>
-				{seed.species}
-			</span>
+					<span>
+					<strong>Species:</strong>
+						{seed.species}
+				</span>
 
-			<span>
-				<strong>Iterations:</strong>
-				{Number(props.iteration).toLocaleString('cs')}
-			</span>
+					<span>
+					<strong>Iterations:</strong>
+						{Number(props.iteration).toLocaleString('cs')}
+				</span>
+				</div>
+			</div>
 		</div>
 	</>
 }

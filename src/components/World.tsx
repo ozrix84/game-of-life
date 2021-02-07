@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as seed from '../seed.json';
 import _ from 'lodash';
-import life from "./Life";
+import rules from "./Rules";
 
 type WorldProps = {
 	iteration: number;
@@ -72,51 +72,38 @@ export default class World extends Component<WorldProps, WorldState> {
 	}
 
 	/**
-	 * @param {WorldProps} prevProps - predchozi props
+	 * Re-calculate world
 	 */
-	componentDidUpdate(prevProps: Readonly<WorldProps>) {
-		if (prevProps.iteration !== this.props.iteration) {
-			/**
-			 * Make a copy of the game world
-			 * @type {Array<Number>}
-			 */
-			const worldCopy = _.cloneDeep(this.state.world);
-
-			/**
-			 * Calculate the world's next state of this iteration
-			 */
-			this.state.world.forEach((row, rowIndex)=>{
-				row.forEach((col, colIndex)=> {
-					/**
-					 * Collect all neighbors of current cell element
-					 * @type {Array<Number>}
-					 */
-					const neighbors = this.getCellNeighbors(rowIndex, colIndex);
-
-					/**
-					 * Get a species
-					 * @type {number}
-					 */
-					worldCopy[rowIndex][colIndex] = life(neighbors);
-				});
-			});
-
-			/**
-			 * Save new world state
-			 */
-			this.setState({ world: worldCopy });
-		}
+	recalcWorld(): void {
+		/**
+		 * Make a copy of the game world
+		 * @type {Array<Number>}
+		 */
+		const worldCopy = _.cloneDeep(this.state.world);
 
 		/**
-		 * Discard world on reset change
+		 * Calculate the world's next state of this iteration
 		 */
-		if (this.props.resetted !== prevProps.resetted)
-			this.setState({
-				world: generateWorld({
-					rows: seed.cells,
-					cols: seed.cells
-				})
+		this.state.world.forEach((row, rowIndex)=>{
+			row.forEach((col, colIndex)=> {
+				/**
+				 * Collect all neighbors of current cell element
+				 * @type {Array<Number>}
+				 */
+				const neighbors = this.getCellNeighbors(rowIndex, colIndex);
+
+				/**
+				 * Get a species
+				 * @type {number}
+				 */
+				worldCopy[rowIndex][colIndex] = rules(neighbors);
 			});
+		});
+
+		/**
+		 * Save new world state
+		 */
+		this.setState({ world: worldCopy });
 	}
 
 	/**
@@ -153,8 +140,8 @@ export default class World extends Component<WorldProps, WorldState> {
 		let result = [world[row][col]]; // [ world[row][col] ];
 
 		/**
-		 * We're interested in 9 elements in total
-		 * (8 neighbors)
+		 * Loop through all of the element's
+		 * neighbors (9 elements including th reference element itself)
 		 */
 		for (let i = 1; i <= 9; i++) {
 			/**
@@ -184,12 +171,15 @@ export default class World extends Component<WorldProps, WorldState> {
 				result.push(world[r][c]);
 
 			/**
-			 * Keep
+			 * Keep going through cells
+			 * up until to the third
 			 */
 			if (i % 3 !== 0) { c++; }
 
 			/**
-			 *
+			 * Reset column pointer to
+			 * the first element, continue
+			 * with the next row
 			 */
 			else { c = col - 1; r++; }
 		}
@@ -205,6 +195,29 @@ export default class World extends Component<WorldProps, WorldState> {
 	mouseOverHandler(rowIndex: number, colIndex: number): void {
 		if (this.state.mouseDown)
 			this.changeCellSpecies(rowIndex, colIndex, this.props.species);
+	}
+
+	/**
+	 * @param {WorldProps} prevProps - predchozi props
+	 */
+	componentDidUpdate(prevProps: Readonly<WorldProps>) {
+		/**
+		 * Recalc world on every iteration
+		 */
+		if (prevProps.iteration !== this.props.iteration)
+			this.recalcWorld();
+
+		/**
+		 * Discard world on reset change
+		 */
+		console.log(this.props.resetted, prevProps.resetted);
+		if (this.props.resetted !== prevProps.resetted)
+			this.setState({
+				world: generateWorld({
+					rows: seed.cells,
+					cols: seed.cells
+				})
+			});
 	}
 
 	render() {
