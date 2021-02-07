@@ -66,7 +66,7 @@ export function crowded(p: Params) {
 	},0);
 }
 
-const rules = (cells: number[]): number => {
+const rulesCheck = (cells: number[]): number => {
 	/**
 	 * The root (initial) cell
 	 * @type {number}
@@ -130,4 +130,4 @@ const rules = (cells: number[]): number => {
 	return root;
 }
 
-export default rules;
+export default rulesCheck;

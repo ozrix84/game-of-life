@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from '../components/App';
+import App from '../src/components/App';
 
 test('App renders controls and world', () => {
   	const { container } = render(<App />);

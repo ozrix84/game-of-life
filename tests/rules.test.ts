@@ -1,4 +1,4 @@
-import { reproduces, survives, crowded, isolated } from "../components/Rules";
+import { reproduces, survives, crowded, isolated } from "../src/rules";
 
 test('Cell reproduces', () => {
 	// 3 cells of type 1

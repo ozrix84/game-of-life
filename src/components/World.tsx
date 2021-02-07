@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as seed from '../seed.json';
 import _ from 'lodash';
-import rules from "./Rules";
+import rulesCheck from "../rules";
 
 type WorldProps = {
 	iteration: number;
@@ -96,7 +96,7 @@ export default class World extends Component<WorldProps, WorldState> {
 				 * Get a species
 				 * @type {number}
 				 */
-				worldCopy[rowIndex][colIndex] = rules(neighbors);
+				worldCopy[rowIndex][colIndex] = rulesCheck(neighbors);
 			});
 		});
 
