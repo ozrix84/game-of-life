@@ -18,7 +18,7 @@ Conway's Game of Life written in React and Typescript.
 
 `npm run-script build`
 
-`serve -s build` (Preview the production build)
+Preview / serve the production build via `serve -s build`
 
 **Run tests**
 
