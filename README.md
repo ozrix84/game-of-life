@@ -1,4 +1,4 @@
-# Game of Life / React
+# Game of Life
 Conway's Game of Life written in React and Typescript.
 
 ![GOF](https://user-images.githubusercontent.com/78653736/107159815-af2c7480-6992-11eb-90f4-a665cff9d783.gif)
