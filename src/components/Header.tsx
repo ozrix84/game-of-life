@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 		<div className="header">
 			<div className="header_headline">
 				<h1>Conway's Game of Life</h1>
-				<p>Draw some shapes, then press start</p>
+				<p>Draw shapes on the grid, then press start</p>
 			</div>
 
 			<div className="header_controls">
