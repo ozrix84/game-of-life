@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import App from '../components/App';
 import World from "../components/World";
 
-test('Renders controls and world', () => {
+test('App renders controls and world', () => {
   	render(<App />);
 
 	/**

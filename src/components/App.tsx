@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import World from "../components/World";
 import Header from '../components/Header';
 import usePrevious from "../hooks/usePrevious";
-import github from '../images/github.png';
-import react from '../images/react.png';
 
 /**
  * Root App
@@ -110,15 +108,6 @@ const App: React.FC = () => {
 				   iteration={iteration}
 				   resetted={resetted}
 			/>
-
-			<div className="links">
-				<a className="react" href="https://reactjs.org/">
-					<img width="20" src={react} alt="Go to the project page at Github" />
-				</a>
-				<a className="github" href="https://github.com/ozrix84/game-of-life">
-					<img width="60" src={github} alt="Go to the React homepage" />
-				</a>
-			</div>
 		</div>
 	</>;
 }
