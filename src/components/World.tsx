@@ -224,7 +224,9 @@ export default class World extends Component<WorldProps, WorldState> {
 			return (
 				<tr key={rowIndex}>
 					{row.map((col, colIndex)=> {
-						return <td key={colIndex}
+						return <td data-x={rowIndex}
+								   data-y={colIndex}
+								   key={colIndex}
 								   className={`type-${col}`}
 								   onClick={()=>this.changeCellSpecies(rowIndex, colIndex, this.props.species)}
 								   onMouseOver={()=>this.mouseOverHandler(rowIndex, colIndex)}
@@ -236,7 +238,18 @@ export default class World extends Component<WorldProps, WorldState> {
 
 		return <>
 			<table onMouseDown={()=>this.setState({ mouseDown: true })}
-				   onMouseUp={()=>this.setState({ mouseDown: false })}>
+				   onTouchStart={()=>this.setState({ mouseDown: true })}
+				   onMouseUp={()=>this.setState({ mouseDown: false })}
+				   onTouchEnd={()=>this.setState({ mouseDown: false })}
+
+				   onTouchMove={(e)=>{
+						const cell = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
+						const rowIndex = cell!.getAttribute('data-x');
+						const colIndex = cell!.getAttribute('data-y');
+
+						if (rowIndex && colIndex)
+							this.mouseOverHandler(+rowIndex, +colIndex);
+				   }}>
 				<tbody>
 					{world}
 				</tbody>
