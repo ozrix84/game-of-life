@@ -3,6 +3,8 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
+    "inobounce": "^0.2.0",
+    "is-mobile": "^2.2.2",
     "lodash": "^4.17.20",
     "random-js": "^2.1.0",
     "react": "^17.0.1",

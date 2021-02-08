@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import World from "../components/World";
 import Header from '../components/Header';
 import usePrevious from "../hooks/usePrevious";

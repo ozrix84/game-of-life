@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'inobounce';
 import App from './components/App';
 import Links from "./components/Links";
 import './styles/index.css';

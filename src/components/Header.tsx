@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import * as seed from '../seed.json';
+import isMobile from "is-mobile";
 
 type HeaderProps = {
 	onClick(): void;
@@ -51,7 +52,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 					</label>
 
 					<label>
-						<strong>Delay (ms):</strong>
+						<strong>Delay: {isMobile() ? '' : '(ms)'}</strong>
 						<select value={props.iterationDelay}
 								onChange={(e)=>props.onChangeSpeed(e)}>
 							{delay.map((delay,i)=>{

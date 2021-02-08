@@ -15,6 +15,7 @@ body {
 
 body.no-scroll {
 	overflow: hidden;
+	position: fixed;
 }
 
 table {
@@ -169,39 +170,69 @@ label:last-child select {
 }
 
 @media screen and (max-width: 900px) {
+	html {
+		height  : 100%;
+		overflow: hidden;
+		position: relative;
+	}
 	body {
+		height  : 100%;
+		overflow: auto;
+		position: relative;
 		font-size: 11px;
+		padding-top: 5px;
+	}
+
+	h1 {
+		font-size: 20px;
+	}
+
+	table {
+		margin-bottom: 7px;
 	}
 
 	td {
-		padding: 0 1px;
-		font-size: 7px;
+		padding: 3px;
+		font-size: 0;
 	}
 
 	label {
-		margin-left: 10px;
+		margin-left: 5px;
 	}
 
 	select {
 		padding: 0;
 		margin: 0;
+		font-size: 11px;
 	}
 
 	strong {
 		margin-right: 5px;
 	}
 
+	p {
+		margin-bottom: 7px;
+	}
+
 	.button {
-		width: 50px;
+		width: 42px;
 		margin-right: 5px;
+		font-size: 11px;
+		line-height: 1.8;
 	}
 
 	.header {
+		padding: 0 5px;
 		flex-flow: column;
 	}
 
 	.header_controls {
 		margin-bottom: 8px;
+	}
+
+	.links {
+		margin-top: 0;
+		transform: scale(.8);
 	}
 
 	#root {

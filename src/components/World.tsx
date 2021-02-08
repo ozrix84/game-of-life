@@ -224,7 +224,6 @@ export default class World extends Component<WorldProps, WorldState> {
 	 * Enables drawing, disables scrolling
 	 */
 	touchStartHandler(): void {
-		document.body.classList.add('no-scroll');
 		this.setState({ mouseDown: true });
 	}
 
@@ -233,7 +232,6 @@ export default class World extends Component<WorldProps, WorldState> {
 	 * Quits drawing mode, enables scrolling
 	 */
 	touchEndHandler(): void {
-		document.body.classList.remove('no-scroll');
 		this.setState({ mouseDown: false });
 	}
 
