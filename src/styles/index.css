@@ -13,6 +13,10 @@ body {
 	user-select: none;
 }
 
+body.no-scroll {
+	overflow: hidden;
+}
+
 table {
 	margin: 0 auto 10px;
 
@@ -170,7 +174,7 @@ label:last-child select {
 	}
 
 	td {
-		padding: 0 1.5px;
+		padding: 0 1px;
 		font-size: 7px;
 	}
 

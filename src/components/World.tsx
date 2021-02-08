@@ -219,6 +219,41 @@ export default class World extends Component<WorldProps, WorldState> {
 			});
 	}
 
+	/**
+	 * Touch start handler
+	 * Enables drawing, disables scrolling
+	 */
+	touchStartHandler(): void {
+		document.body.classList.add('no-scroll');
+		this.setState({ mouseDown: true });
+	}
+
+	/**
+	 * Touch end handler
+	 * Quits drawing mode, enables scrolling
+	 */
+	touchEndHandler(): void {
+		document.body.classList.remove('no-scroll');
+		this.setState({ mouseDown: false });
+	}
+
+	/**
+	 * Handle mobile touch
+	 * Used for drawing
+	 * @param {React.TouchEvent<HTMLTableElement>} e - event
+	 */
+	touchMoveHandler(e: React.TouchEvent<HTMLTableElement>): void {
+		const cell = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
+
+		if (cell) {
+			const rowIndex = cell!.getAttribute('data-x');
+			const colIndex = cell!.getAttribute('data-y');
+
+			if (rowIndex && colIndex)
+				this.mouseOverHandler(+rowIndex, +colIndex);
+		}
+	}
+
 	render() {
 		const world = this.state.world.map((row, rowIndex)=>{
 			return (
@@ -239,17 +274,9 @@ export default class World extends Component<WorldProps, WorldState> {
 		return <>
 			<table onMouseDown={()=>this.setState({ mouseDown: true })}
 				   onMouseUp={()=>this.setState({ mouseDown: false })}
-				   onTouchEnd={()=>this.setState({ mouseDown: false })}
-				   onTouchStart={(e)=>this.setState({ mouseDown: true })}
-
-				   onTouchMove={(e)=>{
-						const cell = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
-						const rowIndex = cell!.getAttribute('data-x');
-						const colIndex = cell!.getAttribute('data-y');
-
-						if (rowIndex && colIndex)
-							this.mouseOverHandler(+rowIndex, +colIndex);
-				   }}>
+				   onTouchEnd={()=>this.touchEndHandler()}
+				   onTouchStart={()=>this.touchStartHandler()}
+				   onTouchMove={(e)=>this.touchMoveHandler(e)}>
 				<tbody>
 					{world}
 				</tbody>
