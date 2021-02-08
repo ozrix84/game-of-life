@@ -154,3 +154,44 @@ select {
 	justify-content: center;
 	padding-top: 25px;
 }
+
+@media screen and (max-width: 900px) {
+	body {
+		font-size: 11px;
+	}
+
+	td {
+		padding: 0 1.5px;
+		font-size: 7px;
+	}
+
+	label {
+		margin-left: 10px;
+	}
+
+	select {
+		padding: 0;
+		margin: 0;
+	}
+
+	strong {
+		margin-right: 5px;
+	}
+
+	.button {
+		width: 50px;
+		margin-right: 5px;
+	}
+
+	.header {
+		flex-flow: column;
+	}
+
+	.header_controls {
+		margin-bottom: 8px;
+	}
+
+	#root {
+		padding-top: 0;
+	}
+}
