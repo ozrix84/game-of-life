@@ -61,8 +61,16 @@ hr {
 	background: #888;
 }
 
+p {
+	color: #eee;
+}
+
 select {
-	margin: 0 20px 0 10px;
+	margin: 0 10px 0 0;
+}
+
+label:last-child select {
+	margin: 0;
 }
 
 .type-1 {
@@ -95,7 +103,7 @@ select {
 	position: relative;
 	display: inline-block;
 	width: 80px;
-	margin-right: 15px;
+	margin-right: 10px;
 	margin-top: -2px;
 	height: 17px;
 

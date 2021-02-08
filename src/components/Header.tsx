@@ -63,7 +63,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 				<div className="header_flex">
 					<span>
-						<strong>Cells / row:</strong>
+						<strong>Cells / rows:</strong>
 						{seed.cells}
 					</span>
 

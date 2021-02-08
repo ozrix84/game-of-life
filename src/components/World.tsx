@@ -238,9 +238,9 @@ export default class World extends Component<WorldProps, WorldState> {
 
 		return <>
 			<table onMouseDown={()=>this.setState({ mouseDown: true })}
-				   onTouchStart={()=>this.setState({ mouseDown: true })}
 				   onMouseUp={()=>this.setState({ mouseDown: false })}
 				   onTouchEnd={()=>this.setState({ mouseDown: false })}
+				   onTouchStart={(e)=>this.setState({ mouseDown: true })}
 
 				   onTouchMove={(e)=>{
 						const cell = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
