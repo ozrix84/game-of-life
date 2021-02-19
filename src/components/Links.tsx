@@ -2,7 +2,7 @@ import React from "react";
 import react from "../images/react.png";
 import github from "../images/github.png";
 
-const Links: React.FC = () => {
+function Links() {
 	return <>
 		<div className="links">
 			<a className="react" href="https://reactjs.org/">

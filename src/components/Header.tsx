@@ -20,7 +20,7 @@ const delay = [ 15, 40, 120, 500 ];
  * @param {HeaderProps} props
  * @constructor
  */
-const Header: React.FC<HeaderProps> = (props) => {
+function Header(props: HeaderProps) {
 	return <>
 		<div className="header">
 			<div className="header_headline">

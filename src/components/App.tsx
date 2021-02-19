@@ -5,10 +5,10 @@ import usePrevious from "../hooks/usePrevious";
 
 /**
  * Root App
- * Obsluha krokovani a ovladacich prvku
+ * Handles iterations, renders world and controls
  * @constructor
  */
-const App: React.FC = () => {
+function App() {
 	/**
 	 * Iteration counter
 	 */
