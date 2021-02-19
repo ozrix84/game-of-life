@@ -1,7 +1,7 @@
 # Game of Life
 Conway's Game of Life written in React and Typescript.
 
-[Demo](http://161.35.55.69/game-of-life)
+[Demo](https://krajnak.dev/game-of-life)
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life):
 
